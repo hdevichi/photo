@@ -1,0 +1,432 @@
+/* Link colors */
+a:link {
+	color: #FF0000;
+}
+a:visited {
+	color: #DD0000;
+}
+
+/* Top level elements */
+html {
+   height: 100%;   
+   max-height: 100%; 
+   padding: 0; 
+   margin: 0; 
+   border: 0;  
+   /* hide overflow:hidden from IE5/Mac */ 
+   /* \*/ 
+   overflow: hidden; 
+   /* */ 
+}
+
+body {
+   height: 100%; 
+   max-height: 100%; 
+   overflow: hidden; 
+   padding: 0; 
+   margin: 0; 
+   border: 0;
+}
+
+/* Common divs */
+div#content {
+   text-align: center;
+   display: block; 
+   height: 100%; 
+   max-height: 100%; 
+   overflow: auto;  
+   position: relative; 
+   background: white;
+   color: black;
+   z-index: 3; 
+}
+
+div#content2 {
+   text-align: center;
+   padding-top: 60px;
+   padding-bottom: 38px;
+}
+
+div#headerForm {
+   text-align: right;
+   position: absolute; 
+   margin: 0; 
+   top: 0; 
+   right: 16px; 
+   display: block; 
+   width: 340px;
+   height: 55px; 
+   background: white; 
+   color: black;
+   z-index: 5; 
+   padding-right: 10px;
+   padding-top: 5px;
+   background-image: url("images/degrade.gif");
+   background-repeat: repeat-x;
+   background-position: bottom left;
+}
+img {
+	border: 0px;
+}
+
+img.activeLanguage {
+	border:3px solid #FF0000;
+	vertical-align: middle;
+}
+img.otherLanguage {
+	border:3px solid #FFFFFF;
+	vertical-align: middle;
+}
+div#title {
+   text-align: left;
+   position: absolute; 
+   right: 16px;
+   left:0;
+   padding-left:10px;
+   top: 0; 
+   width: 95%; /* setting 100% hides scrollbar under header*/
+   padding-top: 10px;
+   display: block; 
+   height: 50px; 
+   background: white; 
+   color: black;
+   z-index: 4; 
+   font-size: xx-large;
+   background-image: url("images/degrade.gif");
+   background-repeat: repeat-x;
+   background-position: bottom left;
+}
+
+div#logo {	/* Logo DIV */
+   text-align: center;
+   position: absolute; 
+   margin: 0; 
+   top: 0; 
+   left: 0; 
+   display: none; 
+   padding-top: 5px;
+   padding-left: 5px;
+   width: 250px; 
+   height: 85px; 
+   background: gray; 
+   color: white;
+   z-index: 5; 
+   background-image: url("images/degrade.gif");
+   background-repeat: repeat-x;
+   background-position: bottom left;
+}
+
+div#footer {
+   text-align: center;
+   position: absolute; 
+   margin: 0; 
+   bottom: 0; 
+   right: 16px; 
+   display: block; 
+   width: 100%; 
+   height: 40px;
+   background: gray;
+   color: black;
+   z-index: 4;
+   background-image: url("images/degrade2.gif");
+   background-repeat: repeat-x;
+   background-position: top left;
+}
+
+div#footer1 {
+   padding-left: 30px;
+   padding-top: 15px;
+   float: left;
+}
+
+div#footer2 {
+   float: right;
+   padding-top: 15px;
+   padding-right: 10px;
+}
+
+.alert {
+	color: red;	
+}
+
+.big {
+	font-size: x-large;
+	font-weight: bold;
+}
+	
+p {
+	margin: 0 auto;	
+	width: 600px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div#headerUser {
+	height: 20px;
+	display: inline;
+	padding-right: 5px;
+	float: right;
+}
+div#headerLang {
+	display: inline;
+	height: 20px;
+	float:right;
+	clear:right;
+}
+div#headerMenu {
+	padding-top: 1px;
+	clear: both;
+	height: 20px;
+}
+
+/* Styles used by index page */
+
+table#index {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.indexCell {
+	vertical-align: top;
+	width: 172px;
+	padding: 5px;
+}
+
+.viewed {
+	text-align: right;
+	font-style: italic;
+	font-size: small;
+}
+
+.thumbPic {
+	width: 172px;
+	height: 172px;
+	overflow: hidden; 
+	position: relative;
+}
+
+.thumbPic[class] {
+	display: table; 
+	position: static;
+	width: 172px;
+	height: 172px;
+}
+
+.thumb2 {
+	position: absolute; 
+	top: 50%;
+}  /* for explorer only*/
+
+.thumb2[class] { /* IE can't parse this */
+	display: table-cell; 
+	vertical-align: middle; 
+	position: static;
+	
+}
+
+.thumb3 {
+	position: relative; 
+	top: -50%;
+	left: -50%;
+	border: 3px solid black;
+} /* for explorer only */
+
+
+.thumb3[class] {
+	position: relative; 
+	top: -50%;
+	left:0;
+}
+
+.thumbDir {
+	width: 172px;
+	height: 172px;
+	overflow: hidden; 
+	position: relative;
+}
+
+.thumbDir[class] {
+	display: table; 
+	position: static;
+	width: 172px;
+	height: 172px;
+}
+
+.thumbDir * .thumb3 {
+	border: 0px;
+}
+
+.description {
+	text-align: center;
+	
+}
+
+/* Common classes */
+
+#statistics {
+   font-style: italic;
+}
+
+td.right {
+	text-align: right;	
+}
+
+/* Install page */
+
+table#install {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/* Photo page */
+
+#photoHeader {
+	padding-bottom: 5px;
+}
+	
+#prev {
+	float: left;	
+}
+
+#next {
+	float: right;	
+}
+
+#photo {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#photoMetadata {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+div#photoMetadata table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+
+	border-collapse: collapse;
+}
+#photoMetadata * td {
+		padding: 5px;
+	border: 1px solid gray;
+}
+
+/* Other */
+
+/* file upload progress bar*/
+.progressBar {
+	
+	margin: 0 auto;
+	width:300px;
+	height:20px;
+	border:1px solid gray;	
+	
+}
+
+#progressBarLabel {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#progressBarProgress {
+	
+	width:1px;	
+	height:100%;
+	overflow:hidden;
+	background-color:red;	
+}
+	
+.admin_folder_tree{
+	margin:0px;
+	padding:0px;
+}
+.admin_folder_tree ul{	/* Sub menu groups */
+		margin-left:20px;	/* Left spacing */
+		padding-left:0px;
+		display:none;	/* Initially hide sub nodes */
+}
+.admin_folder_tree li{	/* Nodes */
+		list-style-type:none;
+		vertical-align:middle;
+}
+.admin_folder_tree li a{	/* Node links */
+		color:#000;
+		text-decoration:none;
+		font-family:arial;
+		font-size:0.8em;
+		padding-left:2px;
+}
+/* For ie: */
+.admin_folder_tree li a:visited{	
+		color:#000;
+}
+#changelog {
+	
+	text-align: left; 
+	margin: 0 auto; 
+	width: 500px;
+}
+
+
+#changelog {
+	
+	text-align: left; 
+	margin: 0 auto; 
+	width: 500px;
+}
+
+table#login {
+	margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#login .input {
+	width: 12em;
+}
+
+table#error {
+	margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+	
+#errorLabel {
+	padding: 5px;
+	vertical-align: top;
+}
+	
+table#about {
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+
+TR.formHeaderRow {
+	background-color: #888888;
+}
+
+TD.formContainer {
+	vertical-align: top;
+}
+
+TABLE.form {
+	border: 2px solid #666666;	
+	text-align: left;
+}
+
+#settingsTable {
+	padding: 5px;
+	margin: 0 auto; 
+	text-align: left;	
+}
+
+#adminTable {
+	padding: 10px;
+	margin: 0 auto; 
+}

@@ -1,0 +1,5 @@
+<META name="description" content="Photo Web Application">
+<META name="author" content="Hadrien Devichi">
+<META name="keywords" content="photo">
+<META http-equiv="Content-Type" content="text/html; charset=<%=org.devichi.photo.control.servlet.PhotoConstants.ENCODING %>">
+<META http-equiv="Content-Language" content="fr, en">

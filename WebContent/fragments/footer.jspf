@@ -1,0 +1,30 @@
+<%@page import="org.devichi.photo.control.servlet.AdminServlet"%>
+<%@page import="org.devichi.photo.control.servlet.PhotoConstants"%>
+<%@page import="org.devichi.photo.control.servlet.PhotoServlet"%>
+<script type="text/javascript" src="<%=request.getContextPath()+org.devichi.photo.control.servlet.PhotoConstants.SCRIPTS_URI%>submitFooter.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<DIV id="footer">
+	<div id="footer1">	
+		<A href="<%=request.getContextPath()+org.devichi.photo.control.servlet.NavigationServlet.URI+PhotoConstants.SEPARATOR_PATH+org.devichi.photo.control.servlet.NavigationServlet.COMMAND_ROOT%>">
+			<fmt:message key="nav.summary" />
+		</A>
+		&nbsp;<span id="statistics">
+		<fmt:message key="index.lastModification">
+				<fmt:param value="<%=photoConfig.getPhotoFactory().getLastModificationTimeAsString(new java.util.Locale(user.getLanguage())) %>"/>
+		</fmt:message>
+		</span>
+	</div>
+	<div id="footer2">
+		<A href="<%=request.getContextPath()+org.devichi.photo.control.servlet.NavigationServlet.URI+PhotoConstants.SEPARATOR_PATH+org.devichi.photo.control.servlet.NavigationServlet.COMMAND_ABOUT%>">
+			<fmt:message key="footer.version" />
+		</A><%if (user.isAdmin() && user.getDisplayAdmin()) {%>
+			<a href="<%=request.getContextPath()+AdminServlet.URI+PhotoConstants.SEPARATOR_PATH+AdminServlet.COMMAND_APPLICATION+PhotoServlet.getCommand(request) %>">
+				<img src="<%=request.getContextPath()+org.devichi.photo.control.servlet.PhotoConstants.PATH_TO_THEMES+user.getTheme()%>/images/admin.gif" alt="<fmt:message key="index.adminApp"/>">
+			</a>
+		<%}%>&nbsp;
+		<A href="mailto:<%=((org.devichi.photo.model.config.PhotoConfiguration)getServletContext().getAttribute(org.devichi.photo.control.servlet.PhotoConstants.CONTEXT_CONFIGURATION)).getAdminEMailAdress() %>">
+			<fmt:message key="footer.mailToAdmin" />
+		</A>	
+	</DIV>
+</DIV>
+
