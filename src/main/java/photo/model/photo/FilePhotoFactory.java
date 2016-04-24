@@ -4,13 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.drew.metadata.exif.ExifDirectoryBase;
@@ -29,6 +23,8 @@ import photo.utils.PhotoUtils;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+
+import static com.drew.metadata.exif.ExifDirectoryBase.*;
 
 /**
  * This photo factory is implemented for ease of administration & manual
@@ -207,7 +203,7 @@ public class FilePhotoFactory extends PhotoFactory {
 		}
 		return getDescription(id);
 	}
-	
+
 	protected PhotoDescription internalGetDescription(String id) throws PhotoException {
 		
 		checkId(id);
@@ -229,14 +225,22 @@ public class FilePhotoFactory extends PhotoFactory {
 			texts.put(locales[i], getDescriptions().getString(getTextKey(id, locales[i])));
 		}
 		
-		List<String> groups;
-		List<String> adminGroups;
+		List<String> groups = new ArrayList<String>();
+		List<String> adminGroups = new ArrayList<String>();
 		if (isDirectory) {
-			groups = (List<String>)getDescriptions().getList(getAuthorizedGroupsKey(id));
-			adminGroups = getDescriptions().getList(getAdminGroupsKey(id));
+			for ( Object item : getDescriptions().getList(getAuthorizedGroupsKey(id))) {
+				groups.add(item.toString());
+			}
+			for ( Object item : getDescriptions().getList(getAdminGroupsKey(id))) {
+				adminGroups.add(item.toString());
+			}
 		} else {
-			groups = getDescriptions().getList(getAuthorizedGroupsKey(getParent(id)));
-			adminGroups =  getDescriptions().getList(getAdminGroupsKey(getParent(id)));
+			for ( Object item : getDescriptions().getList(getAuthorizedGroupsKey(getParent(id)))) {
+				groups.add(item.toString());
+			}
+			for ( Object item : getDescriptions().getList(getAdminGroupsKey(getParent(id)))) {
+				adminGroups.add(item.toString());
+			}
 		}
 		
 		
@@ -935,15 +939,15 @@ public class FilePhotoFactory extends PhotoFactory {
 		try {
 			metadata = JpegMetadataReader.readMetadata(image);
 			
-			Directory exifDirectory = metadata.getDirectory(ExifDirectoryBase.class);
-			String cameraModel = exifDirectory.getString(ExifDirectoryBase.TAG_MODEL);
+			Directory exifDirectory = metadata.getFirstDirectoryOfType(ExifDirectoryBase.class);
+			String cameraModel = exifDirectory.getString(TAG_MODEL);
 			if (cameraModel == null || cameraModel.length() == 0)
 				return null;
 			
-			String focal = exifDirectory.getString(ExifDirectoryBase.TAG_FOCAL_LENGTH);
-			String dateTime = exifDirectory.getString(ExifDirectoryBase.TAG_DATETIME);
-			String exposure = exifDirectory.getString(ExifDirectoryBase.TAG_EXPOSURE_TIME);
-			String iso = exifDirectory.getString(ExifDirectoryBase.TAG_ISO_EQUIVALENT);
+			String focal = exifDirectory.getString(TAG_FOCAL_LENGTH);
+			String dateTime = exifDirectory.getString(TAG_DATETIME);
+			String exposure = exifDirectory.getString(TAG_EXPOSURE_TIME);
+			String iso = exifDirectory.getString(TAG_ISO_EQUIVALENT);
 					
 			PhotoDescription photo = getDescription(id);
 			PhotoMetadata meta = photo.new PhotoMetadata();
@@ -954,11 +958,11 @@ public class FilePhotoFactory extends PhotoFactory {
 			meta.iso = iso;
 
 			try {
-				Float aperture = exifDirectory.getFloat(ExifDirectoryBase.TAG_APERTURE);
+				Float aperture = exifDirectory.getFloat(TAG_APERTURE);
 				float roundedAperture = Math.round(aperture*100);
 				meta.aperture = "1/" + (roundedAperture/100);
 			} catch (Exception e) {
-				meta.aperture = exifDirectory.getString(ExifDirectoryBase.TAG_APERTURE);
+				meta.aperture = exifDirectory.getString(TAG_APERTURE);
 			}
 			return meta;
 			
